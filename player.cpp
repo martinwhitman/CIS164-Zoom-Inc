@@ -8,35 +8,42 @@
 #include <typeinfo>
 using namespace std;
 
-void playerStart();
-string getStats();
-
-string playerName;
-int playerHp, 
-	maxHp = 20, // What should the max hp be?
-	playerShield = 0,
-	playerDamage;
+class Player
+{
+	void playerStart();
+	string getStats();
+	void die();
 	
+	string playerName;
+	int playerHp, 
+		maxHp = 20, // What should the max hp be?
+		playerShield = 0,
+		playerDamage;
+		
+		
+	int main(){
+		playerStart(); // Ask user for their name
+		
+		//Here is where we would call the dialogue
+		
+		return 0;
+	}
 	
-int main(){
-	playerStart(); // Ask user for their name
+	void playerStart() {
+		playerHp = maxHp; // Set player hp to max
+		playerShield = 0;
+	}
 	
-	//Here is where we would call the dialogue
+	string getStats(){
+		cout << "Health: " << playerHp << endl;
+		cout << "Shield(s): " << playerShield << endl;
+		
+		// We could display the weapon and bonus attack points
+		// the weapon gives here as well
+	}
 	
-	return 0;
-}
-
-void playerStart() {
-	cout << "What is your name?: ";
-	cin >> playerName;
-	cout << "Hello, " << playerName << "...";
-	playerHp = maxHp; // Set player hp to max
-}
-
-string getStats(){
-	cout << "Health: " << playerHp << endl;
-	cout << "Shields: " << playerShield << endl;
+	void die(){
+		
+	}
 	
-	// We could display the weapon and bonus attack points
-	// the weapon gives here as well
-}
+};
