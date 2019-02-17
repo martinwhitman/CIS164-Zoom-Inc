@@ -3,30 +3,66 @@
 //    Maybe we ask if the player wants to use a shield each attack?
 // 2. Should we ask the user for a name?
 
-
+#include <string>
 #include <iostream>
-#include <typeinfo>
+#include "player.h"
+
 using namespace std;
 
-class Player
-{
-	private:
-		const int maxHealth = 20; // What should max hp be? 
-		int health = maxHealth; 
-		int shield = 0;
-		int score = 0;
+player::player(std::string name){
+	setName(name);
+	setHealth(20);
+	setShield(0);
+	setScore(0);
+}
 
-	public:		
-		void setHealth(int h) { health = h ; } // Setters
-		void setShield(int s) { shield = s ; }
-		void setScore(int s) { score = s ; }
-		
-		int getHealth() { return health; } // Getters
-		int getShield() { return shield; }
-		int getScore() { return score; }
-};
+void player::setName(std::string name){
+	playerName = name;
+}
+
+void player::setHealth(int health){
+	playerHealth = health;
+}
+
+void player::setShield(int shield){
+	playerShield = shield;
+}
+
+void player::setScore(int score){
+	playerScore = score;
+}
+
+void player::setDamage(){
+
+}
+
+void player::attack(){
+
+}
+
+std::string player::getName(){
+	return playerName;
+}
+
+int player::getHealth(){
+	return playerHealth;
+}
+
+int player::getShield(){
+	return playerShield;
+}
+
+int player::getScore(){
+	return playerScore;
+}
+
+int player::getDamage(){
+	return playerDamage;
+}
+
 
 int main(){
-
+	player one("Michelle");
+	cout << "Health: " << one.getHealth() << ", Shield: " << one.getShield() << ", Score: " << one.getScore() << endl;
 	return 0;
 }
