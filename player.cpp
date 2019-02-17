@@ -10,40 +10,23 @@ using namespace std;
 
 class Player
 {
-	void playerStart();
-	string getStats();
-	void die();
-	
-	string playerName;
-	int playerHp, 
-		maxHp = 20, // What should the max hp be?
-		playerShield = 0,
-		playerDamage;
+	private:
+		const int maxHealth = 20; // What should max hp be? 
+		int health = maxHealth; 
+		int shield = 0;
+		int score = 0;
+
+	public:		
+		void setHealth(int h) { health = h ; } // Setters
+		void setShield(int s) { shield = s ; }
+		void setScore(int s) { score = s ; }
 		
-		
-	int main(){
-		playerStart(); // Ask user for their name
-		
-		//Here is where we would call the dialogue
-		
-		return 0;
-	}
-	
-	void playerStart() {
-		playerHp = maxHp; // Set player hp to max
-		playerShield = 0;
-	}
-	
-	string getStats(){
-		cout << "Health: " << playerHp << endl;
-		cout << "Shield(s): " << playerShield << endl;
-		
-		// We could display the weapon and bonus attack points
-		// the weapon gives here as well
-	}
-	
-	void die(){
-		
-	}
-	
+		int getHealth() { return health; } // Getters
+		int getShield() { return shield; }
+		int getScore() { return score; }
 };
+
+int main(){
+
+	return 0;
+}
