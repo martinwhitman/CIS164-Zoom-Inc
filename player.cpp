@@ -16,7 +16,7 @@ player::player(std::string name){
 	setScore(0);
 }
 
-void player::setName(std::string name){
+void player::setName(std::string name){ // Possibly remove if we choose to exclude a name
 	playerName = name;
 }
 
@@ -32,8 +32,14 @@ void player::setScore(int score){
 	playerScore = score;
 }
 
-void player::setDamage(){
+void player::setAttackDamage(){ 
 
+}
+
+void player::setDamageTaken(int damage){
+	totalDamageTaken += damage; // Store monster damage in a total damage taken variable for fight
+	damageTaken = damage; // Store monster damage in a damage taken variable for one hit
+	playerHealth -= damage; // Decrease player health by monster damage taken
 }
 
 void player::attack(){
@@ -56,13 +62,32 @@ int player::getScore(){
 	return playerScore;
 }
 
-int player::getDamage(){
+int player::getAttackDamage(){
 	return playerDamage;
+}
+
+int player::getDamageTaken(){ // Get damage taken from most recent single monster hit taken
+	return damageTaken;
+}
+
+int player::getTotalDamageTaken(){ // Get damage taken from 
+	return totalDamageTaken;
+}
+
+void player::die(){
+	
 }
 
 
 int main(){
+	// This is a test
 	player one("Michelle");
+	cout << one.getName() << endl;
 	cout << "Health: " << one.getHealth() << ", Shield: " << one.getShield() << ", Score: " << one.getScore() << endl;
+	
+	if(one.getHealth() == 0){ 
+		one.die();
+	}
+	
 	return 0;
 }

@@ -8,21 +8,26 @@ class player
 			setHealth(int),
 			setShield(int),
 			setScore(int),
-			setDamage(),
-			attack();
+			setAttackDamage(),
+			setDamageTaken(int),
+			attack(),
+			die();
 		std::string getName();
 		int getHealth(),
 			getMaxHealth(),
 			getShield(),
 			getScore(),
-			getDamage();
-		void die();
-		
-	private:
+			getAttackDamage(),
+			getLocation(),
+			getDamageTaken(),
+			getTotalDamageTaken();
 		std::string playerName;
-		int maxHealth;
 		int playerHealth;
 		int playerShield;
 		int playerScore;
 		int playerDamage;
+		int critChance;
+		int location;	
+		int damageTaken = 0;
+		int totalDamageTaken = 0;		
 };
