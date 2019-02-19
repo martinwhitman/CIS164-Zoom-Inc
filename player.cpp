@@ -54,6 +54,7 @@ int player::getHitPoints(){
 	return playerHp;
 }
 
+
 int player::getShield(){
 	return playerShield;
 }
