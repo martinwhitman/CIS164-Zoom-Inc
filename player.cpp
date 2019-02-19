@@ -11,7 +11,7 @@ using namespace std;
 
 player::player(std::string name){
 	setName(name);
-	setHealth(20);
+	setHitPoints(20);
 	setShield(0);
 	setScore(0);
 }
@@ -20,8 +20,8 @@ void player::setName(std::string name){ // Possibly remove if we choose to exclu
 	playerName = name;
 }
 
-void player::setHealth(int health){
-	playerHealth = health;
+void player::setHitPoints(int hp){
+	playerHp = hp;
 }
 
 void player::setShield(int shield){
@@ -32,14 +32,14 @@ void player::setScore(int score){
 	playerScore = score;
 }
 
-void player::setAttackDamage(){ 
+void player::setAttackPower(){ 
 
 }
 
 void player::setDamageTaken(int damage){
 	totalDamageTaken += damage; // Store monster damage in a total damage taken variable for fight
 	damageTaken = damage; // Store monster damage in a damage taken variable for one hit
-	playerHealth -= damage; // Decrease player health by monster damage taken
+	playerHp -= damage; // Decrease player health by monster damage taken
 }
 
 void player::attack(){
@@ -50,8 +50,8 @@ std::string player::getName(){
 	return playerName;
 }
 
-int player::getHealth(){
-	return playerHealth;
+int player::getHitPoints(){
+	return playerHp;
 }
 
 int player::getShield(){
@@ -62,7 +62,7 @@ int player::getScore(){
 	return playerScore;
 }
 
-int player::getAttackDamage(){
+int player::getAttackPower(){
 	return playerDamage;
 }
 
@@ -83,9 +83,9 @@ int main(){
 	// This is a test
 	player one("Michelle");
 	cout << one.getName() << endl;
-	cout << "Health: " << one.getHealth() << ", Shield: " << one.getShield() << ", Score: " << one.getScore() << endl;
+	cout << "Health: " << one.getHitPoints() << ", Shield: " << one.getShield() << ", Score: " << one.getScore() << endl;
 	
-	if(one.getHealth() == 0){ 
+	if(one.getHitPoints() == 0){ 
 		one.die();
 	}
 	

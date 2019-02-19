@@ -5,24 +5,24 @@ class player
 	public:
 		player(std::string);
 		void setName(std::string),
-			setHealth(int),
+			setHitPoints(int),
 			setShield(int),
 			setScore(int),
-			setAttackDamage(),
+			setAttackPower(),
 			setDamageTaken(int),
 			attack(),
 			die();
 		std::string getName();
-		int getHealth(),
+		int getHitPoints(),
 			getMaxHealth(),
 			getShield(),
 			getScore(),
-			getAttackDamage(),
+			getAttackPower(),
 			getLocation(),
 			getDamageTaken(),
 			getTotalDamageTaken();
 		std::string playerName;
-		int playerHealth;
+		int playerHp;
 		int playerShield;
 		int playerScore;
 		int playerDamage;
