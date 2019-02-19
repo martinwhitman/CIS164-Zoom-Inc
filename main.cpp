@@ -1,39 +1,34 @@
-//CarlPhillips, cfphillips2@dmacc.edu
-//Text based adventure game
+//Group project, Zoom
+//Carl Phillips
 
 #include <iostream>
+
+#include "weapon.h"
+#include "Weapon.cpp"
+#include "Monster.cpp"
+#include "Monster.h"
+#include "player.cpp"
+#include "Player.h"
+#include "Room.h"
+#include "Room.cpp"
 using namespace std;
 
-class Weapon
+int main()
 {
-	//Access specifier
-	public:
-		
-	//Data Members
-	string weaponName;
-	int hitPoints;
-	
-	//Member Functions
-	void descWeapon()
-	{
-		cout << weaponName << ": " << hitPoints << endl;
-	}
-	//need to make an attack function for player and enemy based on hitpoints from weapon
-	
-};
-
-int main() 
-{
-	
-	Weapon machette;
+	weapon machette;
 	machette.weaponName = "Machette";
-	machette.hitPoints = 14;
+	machette.hitPoints = 12;
+	weapon knife;
+	knife.weaponName = "Knife";
+	knife.hitPoints = 4;
+	weapon sword;
+	sword.weaponName = "Sword";
+	sword.hitPoints = 16;
+	weapon pistol;
+	pistol.weaponName = "Pistol";
+	pistol.hitPoints = 25;
 	
-	Weapon currentWeapon = machette;
 	
-	currentWeapon.descWeapon();
+	
 
-
-	
-	return 0;
 }

@@ -16,15 +16,6 @@ int playerHp,
 	maxHp = 20, // What should the max hp be?
 	playerShield = 0,
 	playerDamage;
-	
-	
-int main(){
-	playerStart(); // Ask user for their name
-	
-	//Here is where we would call the dialogue
-	
-	return 0;
-}
 
 void playerStart() {
 	cout << "What is your name?: ";

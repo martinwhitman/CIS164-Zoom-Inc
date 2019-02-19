@@ -1,19 +1,20 @@
-#include "room.h"
+#include "Room.h"
 #include <string>
 using namespace std;
 //basic skeleton for attempts to use as member of another class
-class room
+
+room::room()
 {
-	string name;
+	set_name(name);
+}
 
-public:
-	string get_name() const
-	{
-		return name;
-	}
+string room::get_name() const
+{
+	return name;
+}
 
-	void set_name(const string& name)
-	{
-		this->name = name;
-	}
-};
+void room::set_name(const string& name)
+{
+	this->name = name;
+}
+
