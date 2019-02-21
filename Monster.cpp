@@ -1,19 +1,28 @@
 // Monster.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 
-#include "pch.h"
 #include <iostream>
 #include <random>
+#include "Monster.h"
 using namespace std;
 
 class Monster {
 	public:
-		int hitpoints = hitpointSet();
-		int attackPower = attackPowerSet();
+		int hitPoints = setInitialHitPoints();
+		int attackPower = setAttackPower();
 
-		void hitpointCheck()
+		int getHitPoints()
 		{
-			cout << hitpoints << " remaining." << endl;
+			return hitPoints;
+		}
+
+		int setHitPoints(int hitpoints) {
+			hitPoints = hitpoints;
+		}
+
+		int getAttackPower()
+		{
+			return attackPower;
 		}
 
 		void description() {
@@ -27,7 +36,7 @@ class Monster {
 			 
 		}
 	private:
-			int hitpointSet() {
+			int setInitialHitPoints() {
 				// Randomly generataes a number from 1 to 3
 				random_device rd;
 				mt19937 gen(rd());
@@ -35,7 +44,7 @@ class Monster {
 				return dis(gen);
 			}
 
-			int attackPowerSet() {
+			int setAttackPower() {
 				// Randomly generataes a number from 1 to 2
 				random_device rd;
 				mt19937 gen(rd());
