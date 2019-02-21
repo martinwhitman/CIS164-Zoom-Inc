@@ -13,8 +13,9 @@
 #include "Room.cpp"
 using namespace std;
 
-int main()
-{
+void mainMenu();
+void playGame();
+
 	weapon machette;
 	machette.weaponName = "Machette";
 	machette.hitPoints = 12;
@@ -28,7 +29,32 @@ int main()
 	pistol.weaponName = "Pistol";
 	pistol.hitPoints = 25;
 	
+int main()
+{
+	mainMenu();
 	
-	
+	return 0;
+}
 
+void mainMenu()
+{
+	int menuChoice;
+	cout << "Zoom Inc.  |  Text-Based Adventure Game" << endl;
+	cout << "Main Menu" << endl;
+	cout << "1. Play Game" << endl;
+	cout << "2. Leave Game" << endl;
+	
+	cin >> menuChoice;
+	do {
+		if(menuChoice = 1) {
+			playGame();
+		} else if(menuChoice == 2) {
+			return 0;
+		}
+	} while(menuChoice != 1 || menuChoice != 2);
+}
+
+void playGame()
+{
+	
 }
