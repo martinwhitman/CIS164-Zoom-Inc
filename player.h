@@ -1,4 +1,5 @@
 #include <string>
+#pragma once
 
 class player
 {
@@ -8,7 +9,7 @@ class player
 			setHitPoints(int),
 			setShield(int),
 			setScore(int),
-			setAttackPower(),
+			setAttackPower(int),
 			setDamageTaken(int),
 			attack(),
 			die();

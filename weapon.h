@@ -3,13 +3,14 @@
 #include <string>
 using namespace std;
 
-class weapon
+class Weapon
 {
 	public:
-		weapon();
-		weapon(string newWeapon, int hp);
+		Weapon();
+		Weapon(string newWeapon, int hp);
 		void descWeapon();
-		
+		void setDamage(int damage);	
 		std::string weaponName;
 		int hitPoints;
+		int getDamage();
 };
