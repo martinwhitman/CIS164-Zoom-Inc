@@ -3,16 +3,18 @@
 #pragma once
 #include <iostream>
 #include <random>
-using namespace std;
 
 class Monster {
 	public:
-		int hitpoints = hitpointSet();
-		int attackPower = attackPowerSet();
+		int hitPoints = setInitialHitPoints();
+		int attackPower = setAttackPower();
 
-		void hitpointCheck();
+		int getHitPoints();
+		int setHitPoints(int hitpoints);
+		int getAttackPower();
+
+		int setInitialHitPoints();
+		int setAttackPower();		
 		void description();
-	private:
-			int hitpointSet();
-			int attackPowerSet();
+
 };

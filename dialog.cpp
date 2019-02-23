@@ -8,6 +8,10 @@ using namespace std;
 
 //constructors, can add more obv
 
+	dialog::dialog()
+	{
+		
+	}
 	dialog::dialog(const ::room& room, const string& successful_outcome, const string& unsuccessful_outcome,
 		const string& death_message, const string& victory_message, const string& greeting, const string& warning)
 		: room(room),
@@ -49,7 +53,7 @@ using namespace std;
 
 	string dialog::get_death_message() const
 	{
-		return deathMessage;
+		return "YOU HAVE DIED A TERRIBLE DEATH... TRY AGAIN FOOL";
 	}
 
 	void dialog::set_death_message(const string& death_message)

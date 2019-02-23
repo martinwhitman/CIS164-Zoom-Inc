@@ -1,3 +1,4 @@
+
 // Monster.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 
@@ -6,52 +7,46 @@
 #include "Monster.h"
 using namespace std;
 
-class Monster {
-	public:
-		int hitPoints = setInitialHitPoints();
-		int attackPower = setAttackPower();
-
-		int getHitPoints()
+	int Monster::getHitPoints()
+	{
+		return hitPoints;
+	}
+	
+	int Monster::setHitPoints(int hitpoints) {
+		hitPoints = hitpoints;
+	}
+	
+	int Monster::getAttackPower()
+	{
+		return attackPower;
+	}
+	
+	void Monster::description() {
+		if (attackPower == 1) {
+			cout << "a hairy, mean looking ape." << endl;
+		}
+		else
 		{
-			return hitPoints;
-		}
+			cout << "a large ape with red glowing eyes." << endl;
+		}	 
+	}
+	
+	int Monster::setInitialHitPoints() {
+		// Randomly generataes a number from 1 to 3
+		random_device rd;
+		mt19937 gen(rd());
+		uniform_int_distribution<> dis(1, 3);
+		return dis(gen);
+	}
 
-		int setHitPoints(int hitpoints) {
-			hitPoints = hitpoints;
-		}
+	int Monster::setAttackPower() {
+		// Randomly generataes a number from 1 to 2
+		random_device rd;
+		mt19937 gen(rd());
+		uniform_int_distribution<> dis(1, 2);
+		return dis(gen);
+	}
+	
+	
 
-		int getAttackPower()
-		{
-			return attackPower;
-		}
-
-		void description() {
-			if (attackPower == 1) {
-				cout << "a hairy, mean looking ape." << endl;
-			}
-			else
-			{
-				cout << "a large ape with red glowing eyes." << endl;
-			}
-			 
-		}
-	private:
-			int setInitialHitPoints() {
-				// Randomly generataes a number from 1 to 3
-				random_device rd;
-				mt19937 gen(rd());
-				uniform_int_distribution<> dis(1, 3);
-				return dis(gen);
-			}
-
-			int setAttackPower() {
-				// Randomly generataes a number from 1 to 2
-				random_device rd;
-				mt19937 gen(rd());
-				uniform_int_distribution<> dis(1, 2);
-				return dis(gen);
-			}
-
-		
-};
 

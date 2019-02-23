@@ -8,7 +8,8 @@ class room
 	public:
 	string name;
 
-	room();
-	string get_name() const;
-	void set_name(const string& name);
+	room(string name);
+	string get_name();
+	void set_name(string name);
+	void roomInfo(room current);
 };
