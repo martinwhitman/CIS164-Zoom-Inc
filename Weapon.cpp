@@ -6,21 +6,38 @@
 
 using namespace std;
 
-weapon::weapon()
+Weapon::Weapon()
 {
 }
 
-weapon::weapon(string newWeapon, int hp)
+Weapon::Weapon(string newWeapon, int hp)
 {
 	this->hitPoints = hp;
 	this->weaponName = newWeapon;
-	cout << "Hello" << endl;
 }
 
-void weapon::descWeapon()
+void Weapon::descWeapon()
 {
-cout << weaponName << " : " << hitPoints << endl;
+	cout << weaponName << " : " << hitPoints << endl;
 }
 
+void Weapon::setDamage(int damage)
+{
+	this->hitPoints = damage;
+}
 
+int Weapon::getDamage()
+{
+	return hitPoints;
+}
+
+std::string Weapon::setWeaponName(std::string name)
+{
+	this->weaponName = name;
+}
+
+std::string Weapon::getWeaponName()
+{
+	return weaponName;
+}
 

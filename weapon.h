@@ -1,15 +1,19 @@
 //CarlPhillips, cfphillips2@dmacc.edu
 #pragma once
 #include <string>
-using namespace std;
 
-class weapon
+class Weapon
 {
-	public:
-		weapon();
-		weapon(string newWeapon, int hp);
-		void descWeapon();
-		
-		std::string weaponName;
+	
+	private: 
 		int hitPoints;
+		std::string weaponName;
+	public:
+		Weapon();
+		Weapon(std::string newWeapon, int hp);
+		void descWeapon();
+		void setDamage(int damage);	
+		std::string setWeaponName(std::string name);
+		std::string getWeaponName();
+		int getDamage();
 };

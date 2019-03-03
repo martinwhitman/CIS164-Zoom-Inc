@@ -1,3 +1,4 @@
+
 // Monster.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 
@@ -6,9 +7,18 @@
 #include "Monster.h"
 using namespace std;
 
-	void Monster::hitpointCheck()
+	int Monster::getHitPoints()
 	{
-		cout << hitpoints << " remaining." << endl;
+		return hitPoints;
+	}
+
+	int Monster::setHitPoints(int hitpoints) {
+		hitPoints = hitpoints;
+	}
+
+	int Monster::getAttackPower()
+	{
+		return attackPower;
 	}
 
 	void Monster::description() {
@@ -19,10 +29,9 @@ using namespace std;
 		{
 			cout << "a large ape with red glowing eyes." << endl;
 		}
-		 
 	}
 
-	int Monster::hitpointSet() {
+	int Monster::setInitialHitPoints() {
 		// Randomly generataes a number from 1 to 3
 		random_device rd;
 		mt19937 gen(rd());
@@ -30,11 +39,10 @@ using namespace std;
 		return dis(gen);
 	}
 
-	int Monster::attackPowerSet() {
+	int Monster::setAttackPower() {
 		// Randomly generataes a number from 1 to 2
 		random_device rd;
 		mt19937 gen(rd());
-		uniform_int_distribution<> dis(1, 2);
+		uniform_int_distribution<> dis(1, 10);
 		return dis(gen);
 	}
-

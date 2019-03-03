@@ -32,8 +32,8 @@ void player::setScore(int score){
 	playerScore = score;
 }
 
-void player::setAttackPower(){ 
-
+void player::setAttackPower(int damage){ 
+	playerDamage = damage;
 }
 
 void player::setDamageTaken(int damage){
@@ -80,15 +80,3 @@ void player::die(){
 }
 
 
-int main(){
-	// This is a test
-	player one("Michelle");
-	cout << one.getName() << endl;
-	cout << "Health: " << one.getHitPoints() << ", Shield: " << one.getShield() << ", Score: " << one.getScore() << endl;
-	
-	if(one.getHitPoints() == 0){ 
-		one.die();
-	}
-	
-	return 0;
-}
