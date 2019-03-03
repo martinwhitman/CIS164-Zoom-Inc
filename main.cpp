@@ -17,6 +17,7 @@ using namespace std;
 
 //function declarations
 int mainMenu();
+int diceRoll(int, int);
 void createPlayer();
 void playGame(player Player1);
 void roomWeapons(player Player1);
@@ -35,6 +36,18 @@ void generateMonsters(player Player1);
 	
 int main()
 {
+	weapon machette;
+	machette.weaponName = "Machette";
+	machette.hitPoints = 12;
+	weapon knife;
+	knife.weaponName = "Knife";
+	knife.hitPoints = 4;
+	weapon sword;
+	sword.weaponName = "Sword";
+	sword.hitPoints = 16;
+	weapon pistol;
+	pistol.weaponName = "Pistol";
+	pistol.hitPoints = 25;
 	mainMenu();
 	
 	return 0;
@@ -77,7 +90,7 @@ void createPlayer()											//gets a player name for the users character
 void playGame(player Player1)								//plays the game with the player information
 {
 	//dialog Dialog;
-	room Room("First Room");
+	room Room("104");
 	cout << "Welcome to your first day of school " << Player1.getName() << ". Take your bag and meet in room 104." << endl;
 	
 	cout << "You wake up on the floor of room 104. It is dark, the room is a mess, there is a door on the right, and the left." << endl;
@@ -87,32 +100,74 @@ void playGame(player Player1)								//plays the game with the player informatio
 	currentWeapon.descWeapon();
 	string doorChoice;								
 	
-	while(Room.get_name() != "300") {								//while the player is not in the last room, continue on
+	while(Room.get_name() != "110") {								//while the player is not in the last room, continue on
 		Player1.setAttackPower(currentWeapon.getDamage());			//sets how much damage the player will do based on the weapon
 		Room.roomInfo(Room);										//displays the info of the room
-		
 		generateMonsters(Player1);									//sends to combat
-		
-		
 		roomWeapons(Player1);										//after combat in the new room there will be weapons to choose from
+		int roomNum = 104;
+		int roll;
 		
 		do {														//decides which way the user will go to continue through the map, this will change when the search tree is done
 			cout << "There is a door on your left and one on your right. Which way will you go?" << endl;
 			cin >> doorChoice;
 			if (doorChoice == "left" || doorChoice == "Left") {
-				//stack.push(node);
-				//node = node.left;
-				cout << "\nDEAD";
-				return;
-			} else if (doorChoice == "right" || doorChoice == "Right") {
-				//stack.push(node);
-				//node = node.right;
-				Room.set_name("Next Room");
-			} else {
+				roomNum++;
+				Room.set_name(std::to_string(roomNum));
+				roll = diceRoll(0, 3);
+				if(roll == 0){
+					cout << "DEAD" << endl;
+					return 0;
+				}
+				else if(roll == 1){
+					Room.roomInfo(Room);
+					generateMonsters(Player1);
+					roomWeapons(Player1);
+				}
+				else if(roll == 2){
+					Room.roomInfo(Room);
+					roomWeapons(Player1);
+				}
+				else if(roll == 3){
+					Room.roomInfo(Room);
+					cout << "The room smells faintly of banana. You find nothing.";
+				}
+			} 
+			else if (doorChoice == "right" || doorChoice == "Right") {
+				if(Room.get_name() == "101"){ // If player tries to go right after room 101
+					doorChoice = "Wrong"; 	  // They are unable to since rooms start at 101
+				}
+				else{
+					roomNum--;
+					Room.set_name(std::to_string(roomNum));
+					roll = diceRoll(0, 3);
+					if(roll == 0){
+						cout << "DEAD" << endl;
+						return 0;
+					}
+					else if(roll == 1){
+						Room.roomInfo(Room);
+						generateMonsters(Player1);
+						roomWeapons(Player1);
+					}
+					else if(roll == 2){
+						Room.roomInfo(Room);
+						roomWeapons(Player1);
+					}
+					else if(roll == 3){
+						Room.roomInfo(Room);
+						cout << "All there is in this room is the sound of silence."
+					}
+				}
+			} 
+			else {
 				doorChoice = "Wrong";
 			}
-		} while (doorChoice == "Wrong");						//if neither are chosen you will be asked to choose again
+		} while (doorChoice == "Wrong");						//if neither are chosen you will be asked to choose again	
 	}
+	
+	cout << "You see a ray of light coming from an open window... you are able to escape!" << endl;
+	return 0;		
 }
 
 void generateMonsters(player Player1)							//creates a random number of enemies and iterates through them to fight individually 
@@ -206,4 +261,10 @@ void roomWeapons(player Player1)							//shows available weapons to pick up in t
 				}
 		}
 	}
+}
+
+int diceRoll(int a, int b){
+	srand(time(NULL));
+	roll = rand() % b + a;	
+	return roll;
 }
