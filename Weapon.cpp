@@ -31,3 +31,13 @@ int Weapon::getDamage()
 	return hitPoints;
 }
 
+std::string Weapon::setWeaponName(std::string name)
+{
+	this->weaponName = name;
+}
+
+std::string Weapon::getWeaponName()
+{
+	return weaponName;
+}
+
