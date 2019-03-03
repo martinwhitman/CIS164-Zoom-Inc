@@ -1,15 +1,15 @@
 #pragma once
 #include <string>
-using namespace std;
 //basic skeleton for attempts to use as member of another class
 
 class room
 {
-	public:
-	string name;
+	private:
+		std::string name;
 
-	room(string name);
-	string get_name();
-	void set_name(string name);
-	void roomInfo(room current);
+	public:
+		room(std::string name);
+		std::string get_name();
+		void set_name(std::string name);
+		void roomInfo(room current);
 };

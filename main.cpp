@@ -42,26 +42,23 @@ int main()
 
 int mainMenu()													//gets input from the user if they want to play the game
 {																//or leave the game
-	int menuChoice;
+	string menuChoice;
 
-	do {
+	 while (menuChoice != "1" || menuChoice != "2") {
 		cout << "Zoom Inc.  |  Text-Based Adventure Game" << endl;
 		cout << "Main Menu" << endl;
 		cout << "1. Play Game" << endl;
-		cout << "2. Leave Game\n";
+		cout << "2. Leave Game" << endl;
 	
-		cin.clear();
-		
 		cin >> menuChoice;
-		cin.ignore(0,'\n');
 		
-		if(menuChoice == 1) {
+		if(menuChoice == "1") {
 			createPlayer();
-		} else if(menuChoice == 2) {
+		} else if(menuChoice == "2") {
 			return 0;
-		}
+		} 
 		
-	} while(menuChoice != 1 || menuChoice != 2);
+	}
 }
 
 void createPlayer()											//gets a player name for the users character
@@ -95,6 +92,7 @@ void playGame(player Player1)								//plays the game with the player informatio
 		Room.roomInfo(Room);										//displays the info of the room
 		
 		generateMonsters(Player1);									//sends to combat
+		
 		
 		roomWeapons(Player1);										//after combat in the new room there will be weapons to choose from
 		
@@ -135,67 +133,77 @@ void generateMonsters(player Player1)							//creates a random number of enemies
 
 void roomWeapons(player Player1)							//shows available weapons to pick up in the room
 {															//this will be more random and have more variety
-	string weaponChoice;
+	string weaponChoice = "again";
 	random_device rd;	
 	mt19937 gen(rd());
 	uniform_int_distribution<> dis(1, 4);						//random number of monsters
 	int caseWeapons = dis(gen);						//random number for weapons, sometimes you dont get to choose
-	switch(caseWeapons) {
-		case 1: 
-			cout << "Available Weapons to pick up: " << endl;
-			machette.descWeapon();
-			pistol.descWeapon();							//shows two weapons you can pick up
-			cout << "Weapon Choice: ";
-			cin >> weaponChoice;
-			if (weaponChoice == "Machette" || weaponChoice == "machette"){
-				cout << "You have dropped " << currentWeapon.weaponName << " and picked up " << weaponChoice << endl;
-				currentWeapon = machette;					//will set the current weapon
-			} else if(weaponChoice == "Pistol" || weaponChoice == "pistol"){
-				cout << "You have dropped " << currentWeapon.weaponName << " and picked up " << weaponChoice << endl;
-				currentWeapon = pistol;
-			}
-			break;
-		case 2:
-			cout << "Available Weapons to pick up: " << endl;
-			knife.descWeapon();
-			sword.descWeapon();
-			cout << "Weapon Choice: ";
-			cin >> weaponChoice;
-			if (weaponChoice == "Knife" || weaponChoice == "knife"){
-				cout << "You have dropped " << currentWeapon.weaponName << " and picked up " << weaponChoice << endl;
-				currentWeapon = knife;
-			} else if(weaponChoice == "Sword" || weaponChoice == "sword"){
-				cout << "You have dropped " << currentWeapon.weaponName << " and picked up " << weaponChoice << endl;
-				currentWeapon = sword;
-			}
-			break;
-		case 3:
-			cout << "Available Weapons to pick up: " << endl;
-			axe.descWeapon();
-			spear.descWeapon();
-			cout << "Weapon Choice: ";
-			cin >> weaponChoice;
-			if (weaponChoice == "Axe" || weaponChoice == "axe"){
-				cout << "You have dropped " << currentWeapon.weaponName << " and picked up " << weaponChoice << endl;
-				currentWeapon = axe;
-			} else if(weaponChoice == "Spear" || weaponChoice == "spear"){
-				cout << "You have dropped " << currentWeapon.weaponName << " and picked up " << weaponChoice << endl;
-				currentWeapon = spear;
-			}
-			break;
-		case 4:
-			cout << "Available Weapons to pick up: " << endl;
-			musket.descWeapon();
-			lazergun.descWeapon();
-			cout << "Weapon Choice: ";
-			cin >> weaponChoice;
-			if (weaponChoice == "Lazer" || weaponChoice == "lazer" || weaponChoice == "Lazer Gun" || weaponChoice == "lazer gun"){
-				cout << "You have dropped " << currentWeapon.weaponName << " and picked up " << weaponChoice << endl;
-				currentWeapon = lazergun;
-			} else if(weaponChoice == "musket" || weaponChoice == "Musket"){
-				cout << "You have dropped " << currentWeapon.weaponName << " and picked up " << weaponChoice << endl;
-				currentWeapon = musket;
-			}
-			break;
+	while (weaponChoice == "again") {							//checks if the input was incorrect
+		switch(caseWeapons) {
+			case 1: 
+				cout << "Available Weapons to pick up: " << endl;
+				machette.descWeapon();
+				pistol.descWeapon();							//shows two weapons you can pick up
+				cout << "Weapon Choice: ";
+				cin >> weaponChoice;
+				if (weaponChoice == "Machette" || weaponChoice == "machette"){
+					cout << "You have dropped " << currentWeapon.getWeaponName() << " and picked up " << weaponChoice << endl;
+					currentWeapon = machette;					//will set the current weapon
+				} else if(weaponChoice == "Pistol" || weaponChoice == "pistol"){
+					cout << "You have dropped " << currentWeapon.getWeaponName() << " and picked up " << weaponChoice << endl;
+					currentWeapon = pistol;
+				} else if(weaponChoice != "machette" || weaponChoice != "pistol" || weaponChoice != "Machette" || weaponChoice != "Pistol") {
+					cout << "\nThat is not a weapon, please pick a weapon.\n" << endl;
+					weaponChoice = "again";
+				}
+			case 2:
+				cout << "Available Weapons to pick up: " << endl;
+				knife.descWeapon();
+				sword.descWeapon();
+				cout << "Weapon Choice: ";
+				cin >> weaponChoice;
+				if (weaponChoice == "Knife" || weaponChoice == "knife"){
+					cout << "You have dropped " << currentWeapon.getWeaponName() << " and picked up " << weaponChoice << endl;
+					currentWeapon = knife;
+				} else if(weaponChoice == "Sword" || weaponChoice == "sword"){
+					cout << "You have dropped " << currentWeapon.getWeaponName() << " and picked up " << weaponChoice << endl;
+					currentWeapon = sword;
+				} else if(weaponChoice != "knife" || weaponChoice != "sword" || weaponChoice != "Knife" || weaponChoice != "Sword") {
+					cout << "\nThat is not a weapon, please pick a weapon.\n" << endl;
+					weaponChoice = "again";
+				}
+			case 3:
+				cout << "Available Weapons to pick up: " << endl;
+				axe.descWeapon();
+				spear.descWeapon();
+				cout << "Weapon Choice: ";
+				cin >> weaponChoice;
+				if (weaponChoice == "Axe" || weaponChoice == "axe"){
+					cout << "You have dropped " << currentWeapon.getWeaponName() << " and picked up " << weaponChoice << endl;
+					currentWeapon = axe;
+				} else if(weaponChoice == "Spear" || weaponChoice == "spear"){
+					cout << "You have dropped " << currentWeapon.getWeaponName() << " and picked up " << weaponChoice << endl;
+					currentWeapon = spear;
+				} else if(weaponChoice != "axe" || weaponChoice != "spear" || weaponChoice != "Axe" || weaponChoice != "Spear") {
+					cout << "\nThat is not a weapon, please pick a weapon.\n" << endl;
+					weaponChoice = "again";
+				}
+			case 4:
+				cout << "Available Weapons to pick up: " << endl;
+				musket.descWeapon();
+				lazergun.descWeapon();
+				cout << "Weapon Choice: ";
+				cin >> weaponChoice;
+				if (weaponChoice == "Lazer" || weaponChoice == "lazer" || weaponChoice == "Lazer Gun" || weaponChoice == "lazer gun" || weaponChoice == "lazergun" || weaponChoice == "Lazergun"){
+					cout << "You have dropped " << currentWeapon.getWeaponName() << " and picked up " << weaponChoice << endl;
+					currentWeapon = lazergun;
+				} else if(weaponChoice == "musket" || weaponChoice == "Musket"){
+					cout << "You have dropped " << currentWeapon.getWeaponName() << " and picked up " << weaponChoice << endl;
+					currentWeapon = musket;
+				} else if(weaponChoice != "musket" || weaponChoice != "lazergun" || weaponChoice != "Musket" || weaponChoice != "Lazergun") {
+					cout << "\nThat is not a weapon, please pick a weapon.\n" << endl;
+					weaponChoice = "again";
+				}
+		}
 	}
 }
